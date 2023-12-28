@@ -10,18 +10,16 @@
     color: var(--palette-white-3);
   }
   &:hover {
-    color: var(--palette-white-8);
-    background-color: var(--palette-bright-blue-3);
+    color: var(--palette-white-0);
+    background-color: var(--palette-bright-blue-4);
     @include dark-mode {
-      color: var(--palette-white-0);
       background-color: var(--palette-bright-blue-4);
     }
   }
   &.active {
-    color: var(--palette-gray-1);
+    color: var(--palette-white-0);
     background-color: var(--palette-bright-blue-5);
     @include dark-mode {
-      color: var(--palette-white-0);
       background-color: var(--palette-bright-blue-8);
     }
   }

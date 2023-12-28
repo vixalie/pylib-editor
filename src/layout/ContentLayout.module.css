@@ -19,6 +19,9 @@
       flex-grow: 1;
       font-size: var(--font-size-s);
     }
+    .close-button {
+      z-index: 500;
+    }
   }
   .content {
     @util size(100%);

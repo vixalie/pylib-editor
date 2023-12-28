@@ -25,6 +25,7 @@ export default function ContentLayout(props) {
           color="secondary"
           variant="transparent"
           disabled={props.disableClose ?? false}
+          additionalClasses={[prop("close-button", classes)]}
           onClick={() => navigate("/", { replace: true })}
         >
           <IconX stroke="1.5" />

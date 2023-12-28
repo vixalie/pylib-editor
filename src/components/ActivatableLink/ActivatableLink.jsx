@@ -1,3 +1,4 @@
+import cx from "clsx";
 import { defaultTo, isNil, pick, pipe, prop } from "ramda";
 import { useMemo } from "react";
 import { Link, NavLink } from "react-router-dom";
@@ -25,13 +26,24 @@ const defaultActivatable = pipe(defaultTo(true), prop("activatable"));
  */
 export default function ActivatableLink(props) {
   const LinkComponent = useMemo(
-    () => (props.activatable ? NavLink : Link),
+    () => (props.activatable ?? false ? NavLink : Link),
     [props.activatable]
+  );
+  const linkStyle = useMemo(
+    () =>
+      props.activatable ?? false
+        ? ({ isActive }) =>
+            cx([
+              prop("activatable-link", classes),
+              isActive ? prop("active", classes) : "",
+            ])
+        : cx([prop("activatable-link", classes)]),
+    [props.activatable, classes]
   );
 
   return (
     <LinkComponent
-      className={prop("activatable-link", classes)}
+      className={linkStyle}
       {...pick(["end", "to", "replace"], props)}
     >
       {!isNil(props.leftIcon) && props.leftIcon}

@@ -8,7 +8,7 @@ import classes from "./ActionIcon.module.css";
  * @property {"s" | "m" | "l" | "xl" | "xxl"} [size]
  * @property {"filled" | "subtle" | "transparent"} [variant]
  * @property {"primary" | "secondary" | "danger" | "warn" | "success" | "info"} [color]
- * @property {string[]} [additionalClasses]
+ * @property {import('react').HTMLAttributes["className"]} [className]
  * @property {boolean} [disabled]
  * @property {import("react").MouseEventHandler<HTMLButtonElement>} [onClick]
  */
@@ -34,7 +34,7 @@ export default function ActionIcon(props) {
         prop(`size-${props.size ?? "m"}`, classes),
         prop(`variant-${props.variant ?? "secondary"}`, classes),
         prop(`color-${props.color ?? "transparent"}`, classes),
-        ...(props.additionalClasses ?? [])
+        props.className ?? ""
       )}
       disabled={props.disabled ?? false}
       onClick={handleClick}

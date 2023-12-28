@@ -16,41 +16,23 @@
   }
   @each $color in (primary, secondary, danger, warn, success, info) {
     &.color-#{$color} {
-      color: var(--palette-white-3);
+      color: var(--color-#{$color}-fg);
       &.variant-transparent {
         color: var(--color-#{$color});
         background-color: transparent;
         &[disabled] {
-          color: var(--palette-gray-4);
-          @include dark-mode {
-            color: var(--palette-gray-8);
-          }
-        }
-      }
-      &.variant-subtle {
-        background-color: color-mod(var(--color-#{$color}) a(50%));
-        &[disabled] {
-          color: var(--palette-gray-4);
-          background-color: color-mod(var(--palette-gray-6) a(50%));
-          @include dark-mode {
-            color: var(--palette-gray-8);
-            background-color: color-mod(var(--palette-gray-6) a(50%));
-          }
+          color: var(--color-disabled-fg);
         }
       }
       &.variant-fill {
         background-color: var(--color-#{$color});
         &[disabled] {
-          color: var(--palette-gray-4);
-          background-color: var(--palette-gray-6);
-          @include dark-mode {
-            color: var(--palette-gray-8);
-            background-color: var(--palette-gray-6);
-          }
+          color: var(--color-disabled-fg);
+          background-color: var(--color-disabled-bg);
         }
       }
       &:hover {
-        color: var(--palette-white-0);
+        color: var(--color-#{$color}-fg);
         &.variant-transparent,
         &.variant-subtle,
         &.variant-fill {
@@ -58,13 +40,10 @@
         }
       }
       &:active {
-        color: var(--palette-white-2);
+        color: var(--color-#{$color}-fg-active);
         &.variant-transparent {
           color: var(--color-#{$color}-active);
           background-color: transparent;
-        }
-        &.variant-subtle {
-          background-color: color-mod(var(--color-#{$color}-active) a(50%));
         }
         &.variant-fill {
           background-color: var(--color-#{$color}-active);

@@ -6,7 +6,7 @@ import classes from "./ActionIcon.module.css";
 /**
  * @typedef {object} ActionIconProps
  * @property {"s" | "m" | "l" | "xl" | "xxl"} [size]
- * @property {"filled" | "subtle" | "transparent"} [variant]
+ * @property {"filled" | "transparent"} [variant]
  * @property {"primary" | "secondary" | "danger" | "warn" | "success" | "info"} [color]
  * @property {import('react').HTMLAttributes["className"]} [className]
  * @property {boolean} [disabled]

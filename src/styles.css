@@ -68,3 +68,22 @@ body,
 a {
   text-decoration: none;
 }
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  @util padding(var(--spacing-xs) var(--spacing-xs));
+  border: 1px solid var(--palette-gray-5);
+  border-radius: var(--border-radius-xs);
+  @include dark-mode {
+    border-color: var(--palette-gray-7);
+  }
+  background-color: transparent;
+  font-size: var(--font-size-m);
+  &:focus {
+    border: 1px solid var(--color-primary);
+    @include dark-mode {
+      border-color: var(--color-primary);
+    }
+  }
+}

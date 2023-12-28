@@ -9,27 +9,27 @@
 
   --color-primary: var(--palette-bright-blue-6);
   --color-primary-hover: var(--palette-bright-blue-3);
-  --color-primary-active: var(--palette-bright-blue-4);
+  --color-primary-active: var(--palette-bright-blue-8);
 
   --color-secondary: var(--palette-gray-6);
   --color-secondary-hover: var(--palette-gray-3);
-  --color-secondary-active: var(--palette-gray-4);
+  --color-secondary-active: var(--palette-gray-8);
 
   --color-danger: var(--palette-red-6);
   --color-danger-hover: var(--palette-red-3);
-  --color-danger-active: var(--palette-red-4);
+  --color-danger-active: var(--palette-red-8);
 
   --color-warn: var(--palette-orange-6);
   --color-warn-hover: var(--palette-orange-3);
-  --color-warn-active: var(--palette-orange-4);
+  --color-warn-active: var(--palette-orange-8);
 
   --color-success: var(--palette-green-6);
   --color-success-hover: var(--palette-green-3);
-  --color-success-active: var(--palette-green-4);
+  --color-success-active: var(--palette-green-8);
 
-  --color-info: var(--palette-blue-6);
-  --color-info-hover: var(--palette-blue-3);
-  --color-info-active: var(--palette-blue-4);
+  --color-info: var(--palette-indigo-6);
+  --color-info-hover: var(--palette-indigo-3);
+  --color-info-active: var(--palette-indigo-8);
 
   color: var(--color-light-fg);
   background-color: var(--color-light-bg);

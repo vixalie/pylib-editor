@@ -1,0 +1,15 @@
+.divider {
+  width: 100%;
+  border: none;
+  border-top-style: solid;
+  border-top-color: var(--palette-gray-5);
+  border-top-width: 0;
+}
+
+.divider-vertical {
+  height: 100%;
+  border: none;
+  border-left-style: solid;
+  border-left-color: var(--palette-gray-5);
+  border-left-width: 0;
+}

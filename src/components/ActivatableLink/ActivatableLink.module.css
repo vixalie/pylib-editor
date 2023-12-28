@@ -1,0 +1,28 @@
+@import "@/mixins.css";
+
+.activatable-link {
+  @include flex(row, flex-start, center, --spacing-xs);
+  @util padding(var(--spacing-s) var(--spacing-xs));
+  @util size(100% auto);
+  border-radius: var(--border-radius-xs);
+  color: var(--palette-white-8);
+  @include dark-mode {
+    color: var(--palette-white-3);
+  }
+  &:hover {
+    color: var(--palette-white-8);
+    background-color: var(--palette-bright-blue-3);
+    @include dark-mode {
+      color: var(--palette-white-0);
+      background-color: var(--palette-bright-blue-4);
+    }
+  }
+  &.active {
+    color: var(--palette-gray-1);
+    background-color: var(--palette-bright-blue-5);
+    @include dark-mode {
+      color: var(--palette-white-0);
+      background-color: var(--palette-bright-blue-8);
+    }
+  }
+}

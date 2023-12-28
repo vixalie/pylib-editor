@@ -1,3 +1,4 @@
+/* 定义应用原始色板 */
 :root {
   --color-light-fg: rgba(0, 0, 0, 0.87);
   --color-light-bg: rgba(219, 219, 219, 0.05);

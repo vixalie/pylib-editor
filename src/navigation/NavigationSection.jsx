@@ -2,6 +2,7 @@ import ActionIcon from "@/components/ActionIcon/ActionIcon";
 import ActivatableLink from "@/components/ActivatableLink/ActivatableLink";
 import Divider from "@/components/Divider/Divider";
 import Spacer from "@/components/Spacer/Spacer";
+import useProjectStore from "@/context/project";
 import {
   IconBrandGithub,
   IconDna2,
@@ -13,10 +14,12 @@ import {
   IconListSearch,
   IconTextPlus,
 } from "@tabler/icons-react";
-import { prop } from "ramda";
+import { isNil, prop } from "ramda";
 import classes from "./NavigationSection.module.css";
 
 export default function NavigationSection() {
+  const projectName = useProjectStore((state) => state.projectName);
+
   return (
     <aside className={prop("navigation-container", classes)}>
       <ActivatableLink to="/" leftIcon={<IconTextPlus stroke="1.5" />}>
@@ -25,20 +28,24 @@ export default function NavigationSection() {
       <ActivatableLink to="/" leftIcon={<IconFolderOpen stroke="1.5" />}>
         打开词库...
       </ActivatableLink>
-      <Divider />
-      <p className={prop("library-name", classes)}>词库名称</p>
-      <ActivatableLink to="/" leftIcon={<IconListSearch strole="1.5" />}>
-        浏览词库
-      </ActivatableLink>
-      <ActivatableLink to="/" leftIcon={<IconFileImport stroke="1.5" />}>
-        导入已有词库
-      </ActivatableLink>
-      <ActivatableLink to="/" leftIcon={<IconDna2 stroke="1.5" />}>
-        解析段落
-      </ActivatableLink>
-      <ActivatableLink to="/" leftIcon={<IconFileExport stroke="1.5" />}>
-        导出词库
-      </ActivatableLink>
+      {!isNil(projectName) && (
+        <>
+          <Divider />
+          <p className={prop("library-name", classes)}>{projectName}</p>
+          <ActivatableLink to="/" leftIcon={<IconListSearch strole="1.5" />}>
+            浏览词库
+          </ActivatableLink>
+          <ActivatableLink to="/" leftIcon={<IconFileImport stroke="1.5" />}>
+            导入已有词库
+          </ActivatableLink>
+          <ActivatableLink to="/" leftIcon={<IconDna2 stroke="1.5" />}>
+            解析段落
+          </ActivatableLink>
+          <ActivatableLink to="/" leftIcon={<IconFileExport stroke="1.5" />}>
+            导出词库
+          </ActivatableLink>
+        </>
+      )}
       <Divider />
       <ActivatableLink to="/" leftIcon={<IconKeyboard stroke="1.5" />}>
         码表配置

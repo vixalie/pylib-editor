@@ -1,3 +1,4 @@
+import Spacer from "@/components/Spacer/Spacer";
 import ContentLayout from "@/layout/ContentLayout";
 import { prop } from "ramda";
 import { useForm } from "react-hook-form";
@@ -14,16 +15,21 @@ export default function NewLibraray() {
         className={prop("container", classes)}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div>
+        <div className={prop("form-line", classes)}>
           <label htmlFor="name">词库名称</label>
-          <input type="text" {...register("name")} />
+          <input
+            type="text"
+            {...register("name")}
+            style={{ maxWidth: "15em" }}
+          />
         </div>
-        <div>
+        <div className={prop("form-line", classes)}>
           <label htmlFor="location">存储位置</label>
           <input type="text" {...register("location")} readOnly />
           <button type="button">选择存储位置</button>
         </div>
-        <div>
+        <div className={prop("form-line", classes)}>
+          <Spacer className={prop("spacer", classes)} />
           <button type="submit">创建词库</button>
         </div>
       </form>

@@ -1,6 +1,19 @@
 @import "@/mixins.css";
 
 .container {
-  @util padding(var(--spacing-s) var(--spacing-m));
-  @include flex(column, flex-start, stretch, --spacing-xs);
+  @util padding(var(--spacing-l) var(--spacing-m));
+  @include flex(column, flex-start, stretch, --spacing-m);
+  & .form-line {
+    @include flex(row, flex-start, center, --spacing-s);
+    & label {
+      min-width: 10em;
+      text-align: right;
+    }
+    & input {
+      flex: 1;
+    }
+    & > .spacer {
+      max-width: 10em;
+    }
+  }
 }

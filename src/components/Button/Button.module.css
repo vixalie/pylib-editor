@@ -1,0 +1,96 @@
+@import "@/mixins.css";
+
+.button {
+  border: none;
+  background: none;
+  @util padding(var(--spacing-xs) var(--spacing-m));
+  border-radius: var(--border-radius-xs);
+  @each $size in (xs, s, m, l, xl, xxl) {
+    &.size-#{$size} {
+      font-size: calc(var(--font-size-#{$size}) * 0.8);
+      line-height: calc(var(--font-size-#{$size}) * 1.2);
+    }
+  }
+  &[disabled] {
+    pointer-events: none;
+  }
+  @each $color in (primary, secondary, danger, warn, success, info) {
+    &.color-#{$color} {
+      &.variant-transparent {
+        color: var(--color-#{$color});
+        background-color: tranparent;
+        @include dark-mode {
+          color: var(--color-#{$color});
+        }
+        &:hover {
+          color: var(--color-#{$color}-hover);
+        }
+        &:active {
+          color: var(--color-#{$color}-active);
+        }
+        &[disabled] {
+          color: var(--palette-gray-4);
+          @include dark-mode {
+            color: var(--palette-gray-8);
+          }
+        }
+      }
+      &.variant-fill {
+        color: var(--palette-white-0);
+        background-color: var(--color-#{$color});
+        &:hover {
+          background-color: var(--color-#{$color}-hover);
+        }
+        &:active {
+          background-color: var(--color-#{$color}-active);
+        }
+        &[disabled] {
+          color: var(--palette-gray-2);
+          background-color: var(--palette-gray-4);
+          @include dark-mode {
+            color: var(--palette-gray-5);
+            background-color: var(--palette-gray-8);
+          }
+        }
+      }
+      &.variant-subtle {
+        color: var(--palette-white-0);
+        background-color: color-mod(var(--color-#{$color}) alpha(50%));
+        &:hover {
+          background-color: var(--color-#{$color}-hover);
+        }
+        &:active {
+          background-color: var(--color-#{$color}-active);
+        }
+        &[disabled] {
+          color: var(--palette-gray-2);
+          background-color: color-mod(var(--palette-gray-4) a(50%));
+          @include dark-mode {
+            color: var(--palette-gray-5);
+            background-color: color-mod(var(--palette-gray-8) a(50%));
+          }
+        }
+      }
+      &.variant-outline {
+        color: var(--color-#{$color});
+        border: 1px solid var(--color-#{$color});
+        &:hover {
+          color: var(--color-#{$color}-hover);
+          border-color: var(--color-#{$color}-hover);
+        }
+        &:active {
+          color: var(--color-#{$color}-active);
+          border-color: var(--color-#{$color}-active);
+        }
+        &[disabled] {
+          color: var(--palette-gray-4);
+          border-color: var(--palette-gray-4);
+          @include dark-mode {
+            color: var(--palette-gray-8);
+            border-color: var(--palette-gray-8);
+          }
+        }
+      }
+    }
+  }
+}

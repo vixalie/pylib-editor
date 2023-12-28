@@ -22,7 +22,11 @@ export default function NavigationSection() {
 
   return (
     <aside className={prop("navigation-container", classes)}>
-      <ActivatableLink to="/" leftIcon={<IconTextPlus stroke="1.5" />}>
+      <ActivatableLink
+        to="/new"
+        leftIcon={<IconTextPlus stroke="1.5" />}
+        activatable
+      >
         新建词库
       </ActivatableLink>
       <ActivatableLink to="/" leftIcon={<IconFolderOpen stroke="1.5" />}>

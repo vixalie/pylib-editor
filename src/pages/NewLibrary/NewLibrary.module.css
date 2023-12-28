@@ -1,0 +1,6 @@
+@import "@/mixins.css";
+
+.container {
+  @util padding(var(--spacing-s) var(--spacing-m));
+  @include flex(column, flex-start, stretch, --spacing-xs);
+}

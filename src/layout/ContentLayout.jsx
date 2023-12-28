@@ -30,7 +30,7 @@ export default function ContentLayout(props) {
           <IconX stroke="1.5" />
         </ActionIcon>
       </section>
-      <section>{props.children}</section>
+      <section className={prop("content", classes)}>{props.children}</section>
     </div>
   );
 }

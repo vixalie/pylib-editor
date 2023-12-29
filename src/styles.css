@@ -16,18 +16,18 @@
   --color-primary-hover: var(--palette-bright-blue-3);
   --color-primary-active: var(--palette-bright-blue-8);
   --color-primary-focus: var(--palette-bright-blue-1);
-  --color-primary-fg: var(--palette-white-2);
+  --color-primary-fg: var(--palette-white-1);
   --color-primary-fg-active: var(--palette-white-0);
   --color-primary-input-fg: var(--palette-black-8);
   @include dark-mode {
     --color-primary-input-fg: var(--palette-white-2);
   }
 
-  --color-secondary: var(--palette-gray-6);
-  --color-secondary-hover: var(--palette-gray-3);
-  --color-secondary-active: var(--palette-gray-8);
+  --color-secondary: var(--palette-gray-8);
+  --color-secondary-hover: var(--palette-gray-4);
+  --color-secondary-active: var(--palette-gray-9);
   --color-secondary-focus: var(--palette-gray-1);
-  --color-secondary-fg: var(--palette-white-2);
+  --color-secondary-fg: var(--palette-white-1);
   --color-secondary-fg-active: var(--palette-white-0);
   --color-secondary-input-fg: var(--palette-black-8);
   @include dark-mode {
@@ -38,7 +38,7 @@
   --color-danger-hover: var(--palette-red-3);
   --color-danger-active: var(--palette-red-8);
   --color-danger-focus: var(--palette-red-1);
-  --color-danger-fg: var(--palette-white-2);
+  --color-danger-fg: var(--palette-white-1);
   --color-danger-fg-active: var(--palette-white-0);
   --color-danger-input-fg: var(--palette-black-8);
   @include dark-mode {
@@ -49,7 +49,7 @@
   --color-warn-hover: var(--palette-orange-3);
   --color-warn-active: var(--palette-orange-8);
   --color-warn-focus: var(--palette-orange-1);
-  --color-warn-fg: var(--palette-white-2);
+  --color-warn-fg: var(--palette-white-1);
   --color-warn-fg-active: var(--palette-white-0);
   --color-warn-input-fg: var(--palette-black-8);
   @include dark-mode {
@@ -60,7 +60,7 @@
   --color-success-hover: var(--palette-green-3);
   --color-success-active: var(--palette-green-8);
   --color-success-focus: var(--palette-green-1);
-  --color-success-fg: var(--palette-white-2);
+  --color-success-fg: var(--palette-white-1);
   --color-success-fg-active: var(--palette-white-0);
   --color-success-input-fg: var(--palette-black-8);
   @include dark-mode {
@@ -71,7 +71,7 @@
   --color-info-hover: var(--palette-indigo-3);
   --color-info-active: var(--palette-indigo-8);
   --color-info-focus: var(--palette-indigo-1);
-  --color-info-fg: var(--palette-white-2);
+  --color-info-fg: var(--palette-white-1);
   --color-info-fg-active: var(--palette-white-0);
   --color-info-input-fg: var(--palette-black-8);
   @include dark-mode {

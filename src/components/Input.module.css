@@ -1,0 +1,63 @@
+@import "@/mixins.css";
+
+.input-container {
+  @include flex(row, flex-start, center);
+  border-radius: var(--border-radius-xs);
+  @each $color in (primary, secondary, danger, warn, success, info) {
+    &.color-#{$color} {
+      &.variant-fill {
+        background-color: var(--color-#{$color});
+        & > input {
+          color: var(--color-#{$color}-input-fg);
+        }
+        &:has(input:focus:not([readonly])) {
+          outline: 1px solid var(--color-#{$color}-focus);
+        }
+      }
+      &.variant-outline {
+        border: 1px solid var(--color-#{$color});
+        & > input {
+          color: var(--color-#{$color}-input-fg);
+        }
+        &:has(input:focus:not([readonly])) {
+          outline: 1px solid var(--color-#{$color}-focus);
+        }
+      }
+      &.variant-underline {
+        border-radius: 0;
+        border-bottom: 1px solid var(--color-#{$color});
+        & > input {
+          color: var(--color-#{$color}-input-fg);
+        }
+        &:has(input:focus:not([readonly])) {
+          border-bottom: 1px solid var(--color-#{$color}-focus);
+        }
+      }
+      &.variant-transparent {
+        & > input {
+          color: var(--color-#{$color});
+        }
+        background-color: transparent;
+      }
+    }
+  }
+  .left-section-container {
+    border: none;
+  }
+  .input {
+    @util padding(var(--spacing-xs) var(--spacing-xs));
+    border: none;
+    background-color: transparent;
+    font-size: var(--font-size-m);
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  .value-control-container {
+    @include flex(column, center, stretch);
+  }
+  .right-section-container {
+    border: none;
+  }
+}

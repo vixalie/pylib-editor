@@ -65,8 +65,8 @@
     --color-border-focused: var(--color-primary);
   }
 
-  --color-link-fg: var(--color-gray-3);
-  --color-link-fg-hover: var(--palette-white-2);
+  --color-link-fg: var(--color-gray-7);
+  --color-link-fg-hover: var(--palette-white-1);
   --color-link-bg-hover: var(--palette-bright-blue-4);
   --color-link-fg-active: var(--palette-white-0);
   --color-link-bg-active: var(--palette-bright-blue-6);

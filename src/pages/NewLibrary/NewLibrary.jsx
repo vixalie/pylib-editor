@@ -1,4 +1,5 @@
-import Spacer from "@/components/Spacer/Spacer";
+import Button from "@/components/Button";
+import Spacer from "@/components/Spacer";
 import ContentLayout from "@/layout/ContentLayout";
 import { prop } from "ramda";
 import { useForm } from "react-hook-form";
@@ -26,11 +27,13 @@ export default function NewLibraray() {
         <div className={prop("form-line", classes)}>
           <label htmlFor="location">存储位置</label>
           <input type="text" {...register("location")} readOnly />
-          <button type="button">选择存储位置</button>
+          <Button type="button">选择存储位置</Button>
         </div>
         <div className={prop("form-line", classes)}>
           <Spacer className={prop("spacer", classes)} />
-          <button type="submit">创建词库</button>
+          <Button type="submit" color="primary">
+            创建词库
+          </Button>
         </div>
       </form>
     </ContentLayout>

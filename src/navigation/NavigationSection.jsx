@@ -1,7 +1,7 @@
-import ActionIcon from "@/components/ActionIcon/ActionIcon";
-import ActivatableLink from "@/components/ActivatableLink/ActivatableLink";
-import Divider from "@/components/Divider/Divider";
-import Spacer from "@/components/Spacer/Spacer";
+import ActionIcon from "@/components/ActionIcon";
+import ActivatableLink from "@/components/ActivatableLink";
+import Divider from "@/components/Divider";
+import Spacer from "@/components/Spacer";
 import useProjectStore from "@/context/project";
 import {
   IconBrandGithub,

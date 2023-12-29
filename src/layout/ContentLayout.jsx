@@ -1,4 +1,4 @@
-import ActionIcon from "@/components/ActionIcon/ActionIcon";
+import ActionIcon from "@/components/ActionIcon";
 import { IconX } from "@tabler/icons-react";
 import { prop } from "ramda";
 import { useNavigate } from "react-router-dom";

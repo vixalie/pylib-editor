@@ -1,5 +1,6 @@
 import cx from "clsx";
 import { isNil, omit, prop } from "ramda";
+import { forwardRef } from "react";
 import classes from "./Input.module.css";
 
 /**
@@ -10,7 +11,6 @@ import classes from "./Input.module.css";
  * @property {ClassName} [className]
  * @property {ClassName} [inputClassName]
  * @property {import("react").ReactNode} [leftSection]
- * @property {import("react").ReactNode} [valueControlSection]
  * @property {import("react").ReactNode} [rightSection]
  * @property {"xs" | "s" | "m" | "l" | "xl" | "xxl"} [size]
  * @property {"fill" | "outline" | "underline" | "transparent"} [variant]
@@ -18,19 +18,22 @@ import classes from "./Input.module.css";
  */
 
 /**
- * @param {InputProps & InputHTMLAttributes} props
+ * @type {import("react").ForwardRefExoticComponent<import("react").RefAttributes<InputProps & InputHTMLAttributes>>}
  */
-function Input({
-  className,
-  inputClassName,
-  leftSection,
-  valueControlSection,
-  rightSection,
-  size,
-  variant,
-  color,
-  ...rest
-}) {
+const Input = forwardRef(function (
+  {
+    className,
+    inputClassName,
+    leftSection,
+    valueControlSection,
+    rightSection,
+    size,
+    variant,
+    color,
+    ...rest
+  },
+  ref
+) {
   return (
     <div
       className={cx(
@@ -51,13 +54,9 @@ function Input({
           prop(`size-${size ?? "m"}`, classes),
           inputClassName ?? ""
         )}
+        ref={ref}
         {...rest}
       />
-      {!isNil(valueControlSection) && (
-        <div className={prop("value-control-container", classes)}>
-          {valueControlSection}
-        </div>
-      )}
       {!isNil(rightSection) && (
         <div className={prop("right-section-container", classes)}>
           {rightSection}
@@ -65,37 +64,20 @@ function Input({
       )}
     </div>
   );
-}
+});
 
 /**
- * @param {InputProps & InputHTMLAttributes} props
+ * @type {import("react").ForwardRefExoticComponent<import("react").RefAttributes<InputProps & InputHTMLAttributes>>}
  */
-Input.Text = function (props) {
-  return <Input {...omit(["type"], props)} type="text" />;
-};
+Input.Text = forwardRef(function (props, ref) {
+  return <Input {...omit(["type"], props)} ref={ref} type="text" />;
+});
 
 /**
- * @param {InputProps & InputHTMLAttributes} props
+ * @type {import("react").ForwardRefExoticComponent<import("react").RefAttributes<InputProps & InputHTMLAttributes>>}
  */
-Input.Number = function (props) {
-  const [value, setValue] = useState(props.value);
-  const handleInput = (e) => {
-    setValue(e.target.value);
-    props.onInput?.(e);
-  };
-  const handleChange = (e) => {
-    setValue(e.target.value);
-    props.onChange?.(e);
-  };
-  return (
-    <Input
-      {...omit(["type", "value", "onChange", "onInput"], props)}
-      value={value}
-      onChange={handleChange}
-      onInput={handleInput}
-      type="number"
-    />
-  );
-};
+Input.Number = forwardRef(function (props, ref) {
+  return <Input {...omit(["type"], props)} ref={ref} type="number" />;
+});
 
 export default Input;

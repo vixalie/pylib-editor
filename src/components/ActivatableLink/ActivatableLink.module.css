@@ -6,12 +6,12 @@
   @util size(100% auto);
   border-radius: var(--border-radius-xs);
   color: var(--color-link-fg);
-  &:hover {
-    color: var(--color-link-fg-hover);
-    background-color: var(--color-link-bg-hover);
-  }
   &.active {
     color: var(--color-link-fg-active);
     background-color: var(--color-link-bg-active);
+  }
+  &:hover {
+    color: var(--color-link-fg-hover);
+    background-color: var(--color-link-bg-hover);
   }
 }

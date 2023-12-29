@@ -11,7 +11,7 @@ import classes from "./Button.module.css";
  * @property {ClassName} [className]
  * @property {import("react").ReactNode} [leftIcon]
  * @property {"xs" | "s" | "m" | "l" | "xl" | "xxl"} [size]
- * @property {"fill" | "subtle" | "outline" | "transparent"} [variant]
+ * @property {"fill" | "outline" | "transparent"} [variant]
  * @property {"primary" | "secondary" | "danger" | "warn" | "success" | "info"} [color]
  */
 

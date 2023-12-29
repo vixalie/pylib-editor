@@ -13,6 +13,7 @@
   }
   &[disabled] {
     pointer-events: none;
+    color: var(--color-disabled-fg);
   }
   @each $color in (primary, secondary, danger, warn, success, info) {
     &.color-#{$color} {
@@ -28,47 +29,19 @@
         &:active {
           color: var(--color-#{$color}-active);
         }
-        &[disabled] {
-          color: var(--palette-gray-4);
-          @include dark-mode {
-            color: var(--palette-gray-8);
-          }
-        }
       }
       &.variant-fill {
-        color: var(--palette-white-0);
+        color: var(--color-#{$color}-fg);
         background-color: var(--color-#{$color});
         &:hover {
           background-color: var(--color-#{$color}-hover);
         }
         &:active {
+          color: var(--color-#{$color}-fg-active);
           background-color: var(--color-#{$color}-active);
         }
         &[disabled] {
-          color: var(--palette-gray-2);
-          background-color: var(--palette-gray-4);
-          @include dark-mode {
-            color: var(--palette-gray-5);
-            background-color: var(--palette-gray-8);
-          }
-        }
-      }
-      &.variant-subtle {
-        color: var(--palette-white-0);
-        background-color: color-mod(var(--color-#{$color}) alpha(50%));
-        &:hover {
-          background-color: var(--color-#{$color}-hover);
-        }
-        &:active {
-          background-color: var(--color-#{$color}-active);
-        }
-        &[disabled] {
-          color: var(--palette-gray-2);
-          background-color: color-mod(var(--palette-gray-4) a(50%));
-          @include dark-mode {
-            color: var(--palette-gray-5);
-            background-color: color-mod(var(--palette-gray-8) a(50%));
-          }
+          background-color: var(--color-disabled-bg);
         }
       }
       &.variant-outline {
@@ -83,12 +56,7 @@
           border-color: var(--color-#{$color}-active);
         }
         &[disabled] {
-          color: var(--palette-gray-4);
-          border-color: var(--palette-gray-4);
-          @include dark-mode {
-            color: var(--palette-gray-8);
-            border-color: var(--palette-gray-8);
-          }
+          border-color: var(--color-disabled-bg);
         }
       }
     }

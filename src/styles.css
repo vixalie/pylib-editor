@@ -64,6 +64,19 @@
     --color-border: var(--palette-gray-7);
     --color-border-focused: var(--color-primary);
   }
+
+  --color-link-fg: var(--color-fg);
+  --color-link-fg-hover: var(--palette-white-2);
+  --color-link-bg-hover: var(--palette-bright-blue-4);
+  --color-link-fg-active: var(--palette-white-0);
+  --color-link-bg-active: var(--palette-bright-blue-6);
+
+  @include dark-mode {
+    --color-link-fg-hover: var(--palette-white-3);
+    --color-link-bg-hover: var(--palette-bright-blue-6);
+    --color-link-fg-active: var(--palette-white-0);
+    --color-link-bg-active: var(--palette-bright-blue-8);
+  }
 }
 
 :root {

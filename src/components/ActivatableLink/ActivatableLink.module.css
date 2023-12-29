@@ -5,22 +5,13 @@
   @util padding(var(--spacing-s) var(--spacing-xs));
   @util size(100% auto);
   border-radius: var(--border-radius-xs);
-  color: var(--palette-white-8);
-  @include dark-mode {
-    color: var(--palette-white-3);
-  }
+  color: var(--color-link-fg);
   &:hover {
-    color: var(--palette-white-0);
-    background-color: var(--palette-bright-blue-4);
-    @include dark-mode {
-      background-color: var(--palette-bright-blue-4);
-    }
+    color: var(--color-link-fg-hover);
+    background-color: var(--color-link-bg-hover);
   }
   &.active {
-    color: var(--palette-white-0);
-    background-color: var(--palette-bright-blue-5);
-    @include dark-mode {
-      background-color: var(--palette-bright-blue-8);
-    }
+    color: var(--color-link-fg-active);
+    background-color: var(--color-link-bg-active);
   }
 }

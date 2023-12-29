@@ -1,7 +1,7 @@
 import { createHashRouter } from "react-router-dom";
 import BootLayout from "./layout/BootLayout";
-import NewLibraray from "./pages/NewLibrary/NewLibrary";
-import Welcome from "./pages/Welcome/Welcome";
+import NewLibraray from "./pages/NewLibrary";
+import Welcome from "./pages/Welcome";
 
 const appRoutes = createHashRouter([
   {

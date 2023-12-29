@@ -1,7 +1,7 @@
+import WindowMoveHandler from "@/components/WindowMoveHandler";
 import NavigationSection from "@/navigation/NavigationSection";
 import { prop } from "ramda";
 import { Outlet } from "react-router-dom";
-import WindowMoveHandler from "../components/WindowMoveHandler";
 import classes from "./BootLayout.module.css";
 
 export default function BootLayout() {

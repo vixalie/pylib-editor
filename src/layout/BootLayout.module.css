@@ -7,9 +7,9 @@
   .content-container {
     flex-grow: 1;
     border-radius: var(--border-radius-s);
-    background-color: var(--palette-white-3);
+    background-color: color-mod(var(--palette-white-1) a(55%));
     @include dark-mode {
-      background-color: var(--palette-black-8);
+      background-color: color-mod(var(--palette-black-8) a(55%));
     }
   }
 }

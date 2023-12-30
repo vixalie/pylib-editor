@@ -2,16 +2,48 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Spacer from "@/components/Spacer";
 import ContentLayout from "@/layout/ContentLayout";
-import { prop } from "ramda";
+import { open } from "@tauri-apps/api/dialog";
+import { is, isEmpty, isNil, prop } from "ramda";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import classes from "./NewLibrary.module.css";
 
+async function openDirectory() {
+  const directory = await open({
+    multiple: false,
+    directory: true,
+  });
+  if (!isNil(directory)) {
+    if (is(Array, directory)) return directory[0];
+    return directory;
+  }
+  return null;
+}
+
 export default function NewLibraray() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue, watch } = useForm();
+  const [disableSubmit, setSubmitDisabled] = useState(true);
+
+  const handleSelectDirectory = async () => {
+    const directory = await openDirectory();
+    if (!isNil(directory)) {
+      setValue("location", directory);
+    }
+  };
 
   const onSubmit = (data) => {
     console.log("Form Submit", data);
   };
+
+  useEffect(() => {
+    let subscribeWatch = watch((data, _activated) => {
+      setSubmitDisabled(isEmpty(data["name"]) || isEmpty(data["location"]));
+    });
+
+    return () => {
+      subscribeWatch.unsubscribe();
+    };
+  }, [watch]);
 
   return (
     <ContentLayout title="新建词库">
@@ -35,11 +67,13 @@ export default function NewLibraray() {
             className={prop("input", classes)}
             readOnly
           />
-          <Button type="button">选择存储位置</Button>
+          <Button type="button" onClick={handleSelectDirectory}>
+            选择存储位置
+          </Button>
         </div>
         <div className={prop("form-line", classes)}>
           <Spacer className={prop("spacer", classes)} />
-          <Button type="submit" color="primary">
+          <Button type="submit" color="primary" disabled={disableSubmit}>
             创建词库
           </Button>
         </div>

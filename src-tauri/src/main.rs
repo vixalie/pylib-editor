@@ -3,6 +3,7 @@
 #![allow(dead_code)]
 
 mod config;
+mod entities;
 mod errors;
 mod keyboard_mapping;
 mod library;

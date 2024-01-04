@@ -7,6 +7,8 @@ mod entities;
 mod errors;
 mod keyboard_mapping;
 mod library;
+mod operates;
+mod repos;
 mod setup;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command

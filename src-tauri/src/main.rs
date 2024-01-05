@@ -11,16 +11,13 @@ mod operates;
 mod repos;
 mod setup;
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
-
 fn main() {
     tauri::Builder::default()
         .setup(setup::init)
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![
+            operates::create_new_project,
+            operates::load_project
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

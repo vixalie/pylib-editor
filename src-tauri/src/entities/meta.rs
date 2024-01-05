@@ -1,11 +1,11 @@
 use rusqlite::Row;
 
 pub struct Meta {
-    name: String,
-    author: Option<String>,
-    email: Option<String>,
-    description: Option<String>,
-    version: u32,
+    pub name: String,
+    pub author: Option<String>,
+    pub email: Option<String>,
+    pub description: Option<String>,
+    pub version: u32,
 }
 
 impl TryFrom<Row<'_>> for Meta {

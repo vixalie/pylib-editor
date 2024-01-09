@@ -4,8 +4,10 @@ use crate::{entities::Meta, errors};
 pub fn query_meta() -> anyhow::Result<Meta> {
     let library = crate::library::access();
     if library.is_available() == false {
-        return Err(errors::DatabaseFileError::InvalidProjectFile);
+        return Err(errors::DatabaseFileError::InvalidProjectFile.into());
     }
-    let meta = library.as_ref().query_row("SELECT * FROM meta LIMIT 1", &[], From<Meta>::from)?;
+    let meta = library
+        .as_ref()
+        .query_row("SELECT * FROM meta LIMIT 1", [], |row| Meta::try_from(row))?;
     Ok(meta)
 }

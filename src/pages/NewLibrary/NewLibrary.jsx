@@ -60,6 +60,26 @@ export default function NewLibraray() {
           />
         </div>
         <div className={prop("form-line", classes)}>
+          <label htmlFor="author">作者</label>
+          <Input.Text
+            {...register("author")}
+            variant="underline"
+            style={{ maxWidth: "15em" }}
+          />
+        </div>
+        <div className={prop("form-line", classes)}>
+          <label htmlFor="name">Email</label>
+          <Input.Text
+            {...register("email")}
+            variant="underline"
+            style={{ maxWidth: "25em" }}
+          />
+        </div>
+        <div className={prop("form-line", classes)}>
+          <label htmlFor="name">描述</label>
+          <textarea {...register("description")} />
+        </div>
+        <div className={prop("form-line", classes)}>
           <label htmlFor="location">存储位置</label>
           <Input.Text
             {...register("location")}

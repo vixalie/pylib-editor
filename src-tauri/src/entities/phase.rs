@@ -1,4 +1,5 @@
 use rusqlite::Row;
+use std::cmp::Ordering;
 
 pub struct Phase {
     pub id: u64,
@@ -27,6 +28,20 @@ impl Ord for Phase {
         self.id.cmp(&other.id)
     }
 }
+
+impl PartialOrd for Phase {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.id.cmp(&other.id))
+    }
+}
+
+impl PartialEq for Phase {
+    fn eq(&self, other: &Self) -> bool {
+        self.id == other.id
+    }
+}
+
+impl Eq for Phase {}
 
 impl Phase {
     /// 检查当前此条是否为草稿。

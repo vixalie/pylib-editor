@@ -5,18 +5,16 @@ use std::{
     sync::{Mutex, MutexGuard},
 };
 
-use rusqlite::Connection;
+use rusqlite::{named_params, Connection};
 
 use crate::errors;
 
 #[derive(Debug)]
 pub struct Library {
-    pub connection: Connection,
+    pub connection: Option<Connection>,
 }
 
-static WORKING_LIBRARY: Mutex<Library> = Mutex::new(Library {
-    connection: Connection::open_in_memory().unwrap(),
-});
+static WORKING_LIBRARY: Mutex<Library> = Mutex::new(Library { connection: None });
 
 const CURRENT_VERSION: u32 = 1;
 const CREATE_META_TABLE_SQL: &str = "CREATE TABLE meta IF NOT EXISTS (\
@@ -54,36 +52,37 @@ pub fn new<P: AsRef<Path>>(
     description: Option<String>,
 ) -> anyhow::Result<()> {
     let target_path = path.as_ref();
-    let library_file_path = target_path.join(name + ".pylib");
+    let library_file_path = target_path.join(name.to_owned() + ".pylib");
     if library_file_path.exists() {
-        return Err(errors::DatabaseFileError::FileExists);
+        return Err(errors::DatabaseFileError::FileExists.into());
     }
     let mut library = access();
     library.connection = Connection::open(library_file_path)
-        .map_err(|e| errors::DatabaseFileError::CreateFailed(e))?;
+        .map_err(|e| errors::DatabaseFileError::CreateFailed(e))
+        .ok();
     library
-        .connection
-        .execute(CREATE_META_TABLE_SQL, &[])
+        .connection()?
+        .execute(CREATE_META_TABLE_SQL, [])
         .map_err(|e| errors::DatabaseFileError::InitializationFailed(e))?;
     let current_timestamp = chrono::Utc::now().timestamp();
     library
-        .connection
+        .connection()?
         .execute(
             "INSERT INTO meta (created_at, name, author, email, description, version) \
         VALUES (:create, :name, :author, :email, :description, :version)",
-            &[
-                (":create", current_timestamp),
-                (":name", name),
-                (":author", author),
-                (":email", email),
-                (":description", description),
-                (":version", CURRENT_VERSION),
-            ],
+            named_params! {
+                ":create": current_timestamp,
+                ":name": name,
+                ":author": author,
+                ":email": email,
+                ":description": description,
+                ":version": CURRENT_VERSION,
+            },
         )
         .map_err(|e| errors::DatabaseFileError::InitializationFailed(e))?;
     library
-        .connection
-        .execute(CREATE_PHASE_TABLE_SQL, &[])
+        .connection()?
+        .execute(CREATE_PHASE_TABLE_SQL, [])
         .map_err(|e| errors::DatabaseFileError::InitializationFailed(e))?;
     Ok(())
 }
@@ -92,15 +91,16 @@ pub fn new<P: AsRef<Path>>(
 pub fn open<P: AsRef<Path>>(path: P) -> anyhow::Result<()> {
     let target_path = path.as_ref().to_path_buf();
     if !target_path.exists() {
-        return Err(errors::DatabaseFileError::FileUnexists);
+        return Err(errors::DatabaseFileError::FileUnexists.into());
     }
     let mut library = access();
-    library.connection =
-        Connection::open(target_path).map_err(|e| errors::DatabaseFileError::OpenFailed(e))?;
+    library.connection = Connection::open(target_path)
+        .map_err(|e| errors::DatabaseFileError::OpenFailed(e))
+        .ok();
     if library.is_available() {
         library.check_version()?;
     } else {
-        return Err(errors::DatabaseFileError::InvalidProjectFile);
+        return Err(errors::DatabaseFileError::InvalidProjectFile.into());
     }
     Ok(())
 }
@@ -123,7 +123,7 @@ impl Library {
     pub fn check_version(&self) -> anyhow::Result<()> {
         let version = self
             .as_ref()
-            .query_row("SELECT version FROM meta LIMIT 1", &[], |row| {
+            .query_row("SELECT version FROM meta LIMIT 1", [], |row| {
                 row.get::<&str, u32>("version")
             })
             .map_err(|e| errors::DatabaseFileError::QueryError(e))?;
@@ -131,7 +131,8 @@ impl Library {
             return Err(errors::DatabaseFileError::IncorrectVersion {
                 required: CURRENT_VERSION,
                 found: version,
-            });
+            }
+            .into());
         }
         Ok(())
     }
@@ -139,6 +140,15 @@ impl Library {
 
 impl AsRef<Connection> for Library {
     fn as_ref(&self) -> &Connection {
-        self.connection.as_ref()
+        &self.connection().unwrap()
+    }
+}
+
+impl Library {
+    pub fn connection(&self) -> anyhow::Result<&Connection> {
+        match (self.connection) {
+            Some(ref connection) => Ok(connection),
+            None => Err(errors::DatabaseError::NoDatabaseAvailable.into()),
+        }
     }
 }

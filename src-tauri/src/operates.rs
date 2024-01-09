@@ -1,6 +1,12 @@
+use serde::{Deserialize, Serialize};
 use tauri::{App, AppHandle, Manager, Runtime, Window};
 
 use crate::{library, repos};
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ProjectLoadedEventPayload {
+    pub name: String,
+}
 
 /// 提供给前端的创建新项目的接口
 #[tauri::command]
@@ -12,9 +18,10 @@ pub fn create_new_project<R: Runtime>(
     author: Option<String>,
     email: Option<String>,
     description: Option<String>,
-) -> anyhow::Result<()> {
-    library::new(target_path, &name, author, email, description)?;
-    app.emit_all("project_loaded", name);
+) -> Result<(), String> {
+    library::new(target_path, &name, author, email, description).map_err(|e| e.to_string())?;
+    app.emit_all("project_loaded", ProjectLoadedEventPayload { name })
+        .map_err(|e| e.to_string())?;
     Ok(())
 }
 
@@ -24,9 +31,13 @@ pub fn load_project<R: Runtime>(
     app: AppHandle<R>,
     window: Window<R>,
     target_path: String,
-) -> anyhow::Result<()> {
-    library::open(target_path)?;
-    let meta = repos::query_meta()?;
-    app.emit_all("project_loaded", meta.name);
+) -> Result<(), String> {
+    library::open(target_path).map_err(|e| e.to_string())?;
+    let meta = repos::query_meta().map_err(|e| e.to_string())?;
+    app.emit_all(
+        "project_loaded",
+        ProjectLoadedEventPayload { name: meta.name },
+    )
+    .map_err(|e| e.to_string())?;
     Ok(())
 }

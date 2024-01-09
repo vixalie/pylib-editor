@@ -8,10 +8,10 @@ pub struct Meta {
     pub version: u32,
 }
 
-impl TryFrom<Row<'_>> for Meta {
+impl TryFrom<&Row<'_>> for Meta {
     type Error = rusqlite::Error;
 
-    fn try_from(row: Row) -> Result<Self, Self::Error> {
+    fn try_from(row: &Row) -> Result<Self, Self::Error> {
         Ok(Self {
             name: row.get("name")?,
             author: row.get("author")?,

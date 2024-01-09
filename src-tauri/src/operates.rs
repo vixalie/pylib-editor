@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use tauri::{App, AppHandle, Manager, Runtime, Window};
+use tauri::{AppHandle, Manager, Runtime};
 
 use crate::{library, repos};
 
@@ -12,7 +12,6 @@ pub struct ProjectLoadedEventPayload {
 #[tauri::command]
 pub fn create_new_project<R: Runtime>(
     app: AppHandle<R>,
-    window: Window<R>,
     target_path: String,
     name: String,
     author: Option<String>,
@@ -27,11 +26,7 @@ pub fn create_new_project<R: Runtime>(
 
 /// 提供给前端的加载项目的接口
 #[tauri::command]
-pub fn load_project<R: Runtime>(
-    app: AppHandle<R>,
-    window: Window<R>,
-    target_path: String,
-) -> Result<(), String> {
+pub fn load_project<R: Runtime>(app: AppHandle<R>, target_path: String) -> Result<(), String> {
     library::open(target_path).map_err(|e| e.to_string())?;
     let meta = repos::query_meta().map_err(|e| e.to_string())?;
     app.emit_all(

@@ -1,6 +1,4 @@
 use std::{
-    fs::File,
-    os,
     path::Path,
     sync::{Mutex, MutexGuard},
 };
@@ -146,7 +144,7 @@ impl AsRef<Connection> for Library {
 
 impl Library {
     pub fn connection(&self) -> anyhow::Result<&Connection> {
-        match (self.connection) {
+        match self.connection {
             Some(ref connection) => Ok(connection),
             None => Err(errors::DatabaseError::NoDatabaseAvailable.into()),
         }

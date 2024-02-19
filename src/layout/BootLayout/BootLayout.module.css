@@ -1,0 +1,15 @@
+@import "@/mixins.css";
+
+.layout-container {
+  @include flex(row, flex-start, stretch, --spacing-xs);
+  @util size(100%, 100%);
+  @util padding(var(--spacing-xs));
+  .content-container {
+    flex-grow: 1;
+    border-radius: var(--border-radius-s);
+    background-color: color-mod(var(--palette-white-1) a(55%));
+    @include dark-mode {
+      background-color: color-mod(var(--palette-black-8) a(55%));
+    }
+  }
+}

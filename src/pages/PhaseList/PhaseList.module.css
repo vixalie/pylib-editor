@@ -1,0 +1,14 @@
+@import "@/mixins.css";
+
+.list-page {
+  @util padding(var(--spacing-l) var(--spacing-m));
+  @include flex(row, space-between, flex-start, --spacing-l);
+  .list-container {
+    @include flex(column, flex-start, stretch, --spacing-m);
+    flex-grow: 2;
+  }
+  .editor-container {
+    @include flex(column, flex-start, stretch, --spacing-m);
+    flex-grow: 3;
+  }
+}

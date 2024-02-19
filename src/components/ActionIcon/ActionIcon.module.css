@@ -1,0 +1,59 @@
+@import "@/mixins.css";
+
+.action-icon-button {
+  --size: calc(var(--border-radius-xxs) * 2);
+  border: none;
+  @util padding(0);
+  @each $size in (s, m, l, xl, xxl) {
+    &.size-#{$size} {
+      --size: calc(var(--border-radius-#{$size}) * 2);
+      @util size(calc(var(--size) * 2), calc(var(--size) * 2));
+      border-radius: var(--size);
+      & svg {
+        @util size(calc(var(--size) * 1.4), calc(var(--size) * 1.4));
+      }
+    }
+  }
+  @each $color in (primary, secondary, danger, warn, success, info) {
+    &.color-#{$color} {
+      color: var(--color-#{$color}-fg);
+      &.variant-transparent {
+        color: var(--color-#{$color});
+        background-color: transparent;
+        &[disabled] {
+          color: var(--color-disabled-fg);
+        }
+      }
+      &.variant-fill {
+        background-color: var(--color-#{$color});
+        &[disabled] {
+          color: var(--color-disabled-fg);
+          background-color: var(--color-disabled-bg);
+        }
+      }
+      &:hover {
+        color: var(--color-#{$color}-fg);
+        &.variant-transparent,
+        &.variant-subtle,
+        &.variant-fill {
+          background-color: var(--color-#{$color}-hover);
+        }
+      }
+      &:active {
+        color: var(--color-#{$color}-fg-active);
+        &.variant-transparent {
+          color: var(--color-#{$color}-active);
+          background-color: transparent;
+        }
+        &.variant-fill {
+          background-color: var(--color-#{$color}-active);
+        }
+      }
+    }
+  }
+  &[disabled] {
+    border: none;
+    background: none;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,155 @@
+@import "sanitize.css";
+@import "./variables.css";
+@import "./mixins.css";
+
+/* 定义应用使用色板 */
+:root {
+  --color-fg: var(--color-light-fg);
+  --color-bg: var(--color-light-bg);
+
+  @include dark-mode {
+    --color-fg: var(--color-dark-fg);
+    --color-bg: var(--color-dark-bg);
+  }
+
+  --color-primary: var(--palette-bright-blue-6);
+  --color-primary-hover: var(--palette-bright-blue-3);
+  --color-primary-active: var(--palette-bright-blue-8);
+  --color-primary-focus: var(--palette-bright-blue-1);
+  --color-primary-fg: var(--palette-white-1);
+  --color-primary-fg-active: var(--palette-white-0);
+  --color-primary-input-fg: var(--palette-black-8);
+  @include dark-mode {
+    --color-primary-input-fg: var(--palette-white-2);
+  }
+
+  --color-secondary: var(--palette-gray-8);
+  --color-secondary-hover: var(--palette-gray-4);
+  --color-secondary-active: var(--palette-gray-9);
+  --color-secondary-focus: var(--palette-gray-1);
+  --color-secondary-fg: var(--palette-white-1);
+  --color-secondary-fg-active: var(--palette-white-0);
+  --color-secondary-input-fg: var(--palette-black-8);
+  @include dark-mode {
+    --color-secondary-input-fg: var(--palette-white-2);
+  }
+
+  --color-danger: var(--palette-red-6);
+  --color-danger-hover: var(--palette-red-3);
+  --color-danger-active: var(--palette-red-8);
+  --color-danger-focus: var(--palette-red-1);
+  --color-danger-fg: var(--palette-white-1);
+  --color-danger-fg-active: var(--palette-white-0);
+  --color-danger-input-fg: var(--palette-black-8);
+  @include dark-mode {
+    --color-danger-input-fg: var(--palette-white-2);
+  }
+
+  --color-warn: var(--palette-orange-6);
+  --color-warn-hover: var(--palette-orange-3);
+  --color-warn-active: var(--palette-orange-8);
+  --color-warn-focus: var(--palette-orange-1);
+  --color-warn-fg: var(--palette-white-1);
+  --color-warn-fg-active: var(--palette-white-0);
+  --color-warn-input-fg: var(--palette-black-8);
+  @include dark-mode {
+    --color-warn-input-fg: var(--palette-white-2);
+  }
+
+  --color-success: var(--palette-green-6);
+  --color-success-hover: var(--palette-green-3);
+  --color-success-active: var(--palette-green-8);
+  --color-success-focus: var(--palette-green-1);
+  --color-success-fg: var(--palette-white-1);
+  --color-success-fg-active: var(--palette-white-0);
+  --color-success-input-fg: var(--palette-black-8);
+  @include dark-mode {
+    --color-success-input-fg: var(--palette-white-2);
+  }
+
+  --color-info: var(--palette-indigo-6);
+  --color-info-hover: var(--palette-indigo-3);
+  --color-info-active: var(--palette-indigo-8);
+  --color-info-focus: var(--palette-indigo-1);
+  --color-info-fg: var(--palette-white-1);
+  --color-info-fg-active: var(--palette-white-0);
+  --color-info-input-fg: var(--palette-black-8);
+  @include dark-mode {
+    --color-info-input-fg: var(--palette-white-2);
+  }
+
+  --color-disabled-fg: var(--palette-gray-2);
+  --color-disabled-bg: var(--palette-gray-4);
+  --color-disabled-border: var(--palette-gray-7);
+
+  @include dark-mode {
+    --color-disabled-fg: var(--palette-gray-5);
+    --color-disabled-bg: var(--palette-gray-8);
+  }
+
+  --color-border: var(--palette-gray-5);
+  --color-border-focused: var(--color-primary);
+
+  @include dark-mode {
+    --color-border: var(--palette-gray-7);
+    --color-border-focused: var(--color-primary);
+  }
+
+  --color-link-fg: var(--color-gray-7);
+  --color-link-fg-hover: var(--palette-white-1);
+  --color-link-bg-hover: var(--palette-bright-blue-4);
+  --color-link-fg-active: var(--palette-white-0);
+  --color-link-bg-active: var(--palette-bright-blue-6);
+
+  @include dark-mode {
+    --color-link-fg-hover: var(--palette-white-1);
+    --color-link-bg-hover: var(--palette-bright-blue-6);
+    --color-link-fg-active: var(--palette-white-0);
+    --color-link-bg-active: var(--palette-bright-blue-8);
+  }
+
+  --color-input-underlined-bg: var(--palette-gray-2);
+  @include dark-mode {
+    --color-input-underlined-bg: var(--palette-black-7);
+  }
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+  color: var(--color-fg);
+  background-color: var(--color-bg);
+
+  @util size(100vw, 100vh);
+  overflow: hidden;
+  user-select: none;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: var(--font-size-m);
+  background-color: var(--color-bg);
+}
+
+body,
+#root {
+  @util size(100vw, 100vh);
+  overflow: hidden;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

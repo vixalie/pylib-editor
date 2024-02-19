@@ -1,0 +1,27 @@
+@import "@/mixins.css";
+
+.stat {
+  flex-grow: 1;
+  @include flex(column, flex-start, stretch, --spacing-s);
+  & .label {
+    text-align: left;
+    font-size: var(--font-size-s);
+    color: var(--palette-gray-4);
+    @include dark-mode {
+      color: var(--palette-gray-8);
+    }
+  }
+  & .value-display {
+    @include flex(row, flex-end, baseline, --spacing-s);
+    & .value {
+      flex-grow: 1;
+      font-size: calc(var(--font-size-xxl) * 1.2);
+      font-weight: bold;
+      font-style: italic;
+      text-align: right;
+    }
+    & .unit {
+      font-size: var(--font-size-s);
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import "@/mixins.css";
+
+.zone {
+  @util padding(var(--spacing-s) var(--spacing-m));
+  &:not(:first-of-type) {
+    margin-top: var(--spacing-s);
+  }
+  &.description {
+    @include flex(column, strectch, flex-start, --spacing-s);
+  }
+  &.statistics {
+    @util padding(var(--spacing-s) var(--spacing-l));
+    @include flex(row, flex-start, stretch, --spacing-xxl);
+    width: 100%;
+  }
+}

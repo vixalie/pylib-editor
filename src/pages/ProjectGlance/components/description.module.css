@@ -1,0 +1,6 @@
+@import "@/mixins.css";
+
+.line {
+  @include flex(row, flex-start, center, --spacing-s);
+  width: 100%;
+}

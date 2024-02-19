@@ -1,0 +1,64 @@
+@import "@/mixins.css";
+
+.button {
+  border: none;
+  background: none;
+  @util padding(var(--spacing-xs) var(--spacing-m));
+  border-radius: var(--border-radius-xs);
+  @each $size in (xs, s, m, l, xl, xxl) {
+    &.size-#{$size} {
+      font-size: calc(var(--font-size-#{$size}) * 0.8);
+      line-height: calc(var(--font-size-#{$size}) * 1.2);
+    }
+  }
+  &[disabled] {
+    pointer-events: none;
+    color: var(--color-disabled-fg);
+  }
+  @each $color in (primary, secondary, danger, warn, success, info) {
+    &.color-#{$color} {
+      &.variant-transparent {
+        color: var(--color-#{$color});
+        background-color: tranparent;
+        @include dark-mode {
+          color: var(--color-#{$color});
+        }
+        &:hover {
+          color: var(--color-#{$color}-hover);
+        }
+        &:active {
+          color: var(--color-#{$color}-active);
+        }
+      }
+      &.variant-fill {
+        color: var(--color-#{$color}-fg);
+        background-color: var(--color-#{$color});
+        &:hover {
+          background-color: var(--color-#{$color}-hover);
+        }
+        &:active {
+          color: var(--color-#{$color}-fg-active);
+          background-color: var(--color-#{$color}-active);
+        }
+        &[disabled] {
+          background-color: var(--color-disabled-bg);
+        }
+      }
+      &.variant-outline {
+        color: var(--color-#{$color});
+        border: 1px solid var(--color-#{$color});
+        &:hover {
+          color: var(--color-#{$color}-hover);
+          border-color: var(--color-#{$color}-hover);
+        }
+        &:active {
+          color: var(--color-#{$color}-active);
+          border-color: var(--color-#{$color}-active);
+        }
+        &[disabled] {
+          border-color: var(--color-disabled-bg);
+        }
+      }
+    }
+  }
+}

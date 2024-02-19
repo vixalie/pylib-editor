@@ -1,0 +1,237 @@
+/* 定义应用原始色板 */
+:root {
+  --color-light-fg: hsla(0, 0%, 0%, 0.87);
+  --color-light-bg: hsla(0, 0%, 86%, 0.85);
+  --color-dark-fg: hsla(0, 0%, 100%, 0.87);
+  --color-dark-bg: hsla(0, 0%, 14%, 0.85);
+  --palette-gray: hsl(0, 0%, 52%);
+  --palette-bright-blue: hsl(217, 100%, 50%);
+  --palette-blue: hsl(233, 73%, 45%);
+  --palette-yellow: hsl(57, 69%, 52%);
+  --palette-bright-green: hsl(99, 67%, 52%);
+  --palette-green: hsl(140, 72%, 52%);
+  --palette-tomato: hsl(21, 88%, 52%);
+  --palette-bright-red: hsl(341, 88%, 52%);
+  --palette-red: hsl(0, 89%, 52%);
+  --palette-bright-orange: hsl(40, 100%, 51%);
+  --palette-orange: hsl(32, 98%, 51%);
+  --palette-violet: hsl(267, 70%, 52%);
+  --palette-pink: hsl(302, 88%, 52%);
+  --palette-blue-gray: hsl(228, 11%, 44%);
+  --palette-indigo: hsl(230, 33%, 45%);
+  --palette-white: hsl(0, 0%, 100%);
+  --palette-black: hsl(0, 0%, 0%);
+
+  --palette-white-0: var(--palette-white);
+  --palette-white-1: color-mod(var(--palette-white) shade(10%));
+  --palette-white-2: color-mod(var(--palette-white) shade(20%));
+  --palette-white-3: color-mod(var(--palette-white) shade(30%));
+  --palette-white-4: color-mod(var(--palette-white) shade(40%));
+  --palette-white-5: color-mod(var(--palette-white) shade(50%));
+  --palette-white-6: color-mod(var(--palette-white) shade(60%));
+  --palette-white-7: color-mod(var(--palette-white) shade(70%));
+  --palette-white-8: color-mod(var(--palette-white) shade(80%));
+  --palette-white-9: color-mod(var(--palette-white) shade(90%));
+
+  --palette-black-0: color-mod(var(--palette-black) tint(90%));
+  --palette-black-1: color-mod(var(--palette-black) tint(80%));
+  --palette-black-2: color-mod(var(--palette-black) tint(70%));
+  --palette-black-3: color-mod(var(--palette-black) tint(60%));
+  --palette-black-4: color-mod(var(--palette-black) tint(50%));
+  --palette-black-5: color-mod(var(--palette-black) tint(40%));
+  --palette-black-6: color-mod(var(--palette-black) tint(30%));
+  --palette-black-7: color-mod(var(--palette-black) tint(20%));
+  --palette-black-8: color-mod(var(--palette-black) tint(10%));
+  --palette-black-9: var(--palette-black);
+
+  --palette-gray-0: color-mod(var(--palette-gray) tint(60%));
+  --palette-gray-1: color-mod(var(--palette-gray) tint(50%));
+  --palette-gray-2: color-mod(var(--palette-gray) tint(40%));
+  --palette-gray-3: color-mod(var(--palette-gray) tint(30%));
+  --palette-gray-4: color-mod(var(--palette-gray) tint(20%));
+  --palette-gray-5: color-mod(var(--palette-gray) tint(10%));
+  --palette-gray-6: var(--palette-gray);
+  --palette-gray-7: color-mod(var(--palette-gray) shade(10%));
+  --palette-gray-8: color-mod(var(--palette-gray) shade(20%));
+  --palette-gray-9: color-mod(var(--palette-gray) shade(30%));
+
+  --palette-bright-blue-0: color-mod(var(--palette-bright-blue) tint(60%));
+  --palette-bright-blue-1: color-mod(var(--palette-bright-blue) tint(50%));
+  --palette-bright-blue-2: color-mod(var(--palette-bright-blue) tint(40%));
+  --palette-bright-blue-3: color-mod(var(--palette-bright-blue) tint(30%));
+  --palette-bright-blue-4: color-mod(var(--palette-bright-blue) tint(20%));
+  --palette-bright-blue-5: color-mod(var(--palette-bright-blue) tint(10%));
+  --palette-bright-blue-6: var(--palette-bright-blue);
+  --palette-bright-blue-7: color-mod(var(--palette-bright-blue) shade(10%));
+  --palette-bright-blue-8: color-mod(var(--palette-bright-blue) shade(20%));
+  --palette-bright-blue-9: color-mod(var(--palette-bright-blue) shade(30%));
+
+  --palette-blue-0: color-mod(var(--palette-blue) tint(60%));
+  --palette-blue-1: color-mod(var(--palette-blue) tint(50%));
+  --palette-blue-2: color-mod(var(--palette-blue) tint(40%));
+  --palette-blue-3: color-mod(var(--palette-blue) tint(30%));
+  --palette-blue-4: color-mod(var(--palette-blue) tint(20%));
+  --palette-blue-5: color-mod(var(--palette-blue) tint(10%));
+  --palette-blue-6: var(--palette-blue);
+  --palette-blue-7: color-mod(var(--palette-blue) shade(10%));
+  --palette-blue-8: color-mod(var(--palette-blue) shade(20%));
+  --palette-blue-9: color-mod(var(--palette-blue) shade(30%));
+
+  --palette-yellow-0: color-mod(var(--palette-yellow) tint(60%));
+  --palette-yellow-1: color-mod(var(--palette-yellow) tint(50%));
+  --palette-yellow-2: color-mod(var(--palette-yellow) tint(40%));
+  --palette-yellow-3: color-mod(var(--palette-yellow) tint(30%));
+  --palette-yellow-4: color-mod(var(--palette-yellow) tint(20%));
+  --palette-yellow-5: color-mod(var(--palette-yellow) tint(10%));
+  --palette-yellow-6: var(--palette-yellow);
+  --palette-yellow-7: color-mod(var(--palette-yellow) shade(10%));
+  --palette-yellow-8: color-mod(var(--palette-yellow) shade(20%));
+  --palette-yellow-9: color-mod(var(--palette-yellow) shade(30%));
+
+  --palette-bright-green-0: color-mod(var(--palette-bright-green) tint(60%));
+  --palette-bright-green-1: color-mod(var(--palette-bright-green) tint(50%));
+  --palette-bright-green-2: color-mod(var(--palette-bright-green) tint(40%));
+  --palette-bright-green-3: color-mod(var(--palette-bright-green) tint(30%));
+  --palette-bright-green-4: color-mod(var(--palette-bright-green) tint(20%));
+  --palette-bright-green-5: color-mod(var(--palette-bright-green) tint(10%));
+  --palette-bright-green-6: var(--palette-bright-green);
+  --palette-bright-green-7: color-mod(var(--palette-bright-green) shade(10%));
+  --palette-bright-green-8: color-mod(var(--palette-bright-green) shade(20%));
+  --palette-bright-green-9: color-mod(var(--palette-bright-green) shade(30%));
+
+  --palette-green-0: color-mod(var(--palette-green) tint(60%));
+  --palette-green-1: color-mod(var(--palette-green) tint(50%));
+  --palette-green-2: color-mod(var(--palette-green) tint(40%));
+  --palette-green-3: color-mod(var(--palette-green) tint(30%));
+  --palette-green-4: color-mod(var(--palette-green) tint(20%));
+  --palette-green-5: color-mod(var(--palette-green) tint(10%));
+  --palette-green-6: var(--palette-green);
+  --palette-green-7: color-mod(var(--palette-green) shade(10%));
+  --palette-green-8: color-mod(var(--palette-green) shade(20%));
+  --palette-green-9: color-mod(var(--palette-green) shade(30%));
+
+  --palette-tomato-0: color-mod(var(--palette-tomato) tint(60%));
+  --palette-tomato-1: color-mod(var(--palette-tomato) tint(50%));
+  --palette-tomato-2: color-mod(var(--palette-tomato) tint(40%));
+  --palette-tomato-3: color-mod(var(--palette-tomato) tint(30%));
+  --palette-tomato-4: color-mod(var(--palette-tomato) tint(20%));
+  --palette-tomato-5: color-mod(var(--palette-tomato) tint(10%));
+  --palette-tomato-6: var(--palette-tomato);
+  --palette-tomato-7: color-mod(var(--palette-tomato) shade(10%));
+  --palette-tomato-8: color-mod(var(--palette-tomato) shade(20%));
+  --palette-tomato-9: color-mod(var(--palette-tomato) shade(30%));
+
+  --palette-bright-red-0: color-mod(var(--palette-bright-red) tint(60%));
+  --palette-bright-red-1: color-mod(var(--palette-bright-red) tint(50%));
+  --palette-bright-red-2: color-mod(var(--palette-bright-red) tint(40%));
+  --palette-bright-red-3: color-mod(var(--palette-bright-red) tint(30%));
+  --palette-bright-red-4: color-mod(var(--palette-bright-red) tint(20%));
+  --palette-bright-red-5: color-mod(var(--palette-bright-red) tint(10%));
+  --palette-bright-red-6: var(--palette-bright-red);
+  --palette-bright-red-7: color-mod(var(--palette-bright-red) shade(10%));
+  --palette-bright-red-8: color-mod(var(--palette-bright-red) shade(20%));
+  --palette-bright-red-9: color-mod(var(--palette-bright-red) shade(30%));
+
+  --palette-red-0: color-mod(var(--palette-red) tint(60%));
+  --palette-red-1: color-mod(var(--palette-red) tint(50%));
+  --palette-red-2: color-mod(var(--palette-red) tint(40%));
+  --palette-red-3: color-mod(var(--palette-red) tint(30%));
+  --palette-red-4: color-mod(var(--palette-red) tint(20%));
+  --palette-red-5: color-mod(var(--palette-red) tint(10%));
+  --palette-red-6: var(--palette-red);
+  --palette-red-7: color-mod(var(--palette-red) shade(10%));
+  --palette-red-8: color-mod(var(--palette-red) shade(20%));
+  --palette-red-9: color-mod(var(--palette-red) shade(30%));
+
+  --palette-bright-orange-0: color-mod(var(--palette-bright-orange) tint(60%));
+  --palette-bright-orange-1: color-mod(var(--palette-bright-orange) tint(50%));
+  --palette-bright-orange-2: color-mod(var(--palette-bright-orange) tint(40%));
+  --palette-bright-orange-3: color-mod(var(--palette-bright-orange) tint(30%));
+  --palette-bright-orange-4: color-mod(var(--palette-bright-orange) tint(20%));
+  --palette-bright-orange-5: color-mod(var(--palette-bright-orange) tint(10%));
+  --palette-bright-orange-6: var(--palette-bright-orange);
+  --palette-bright-orange-7: color-mod(var(--palette-bright-orange) shade(10%));
+  --palette-bright-orange-8: color-mod(var(--palette-bright-orange) shade(20%));
+  --palette-bright-orange-9: color-mod(var(--palette-bright-orange) shade(30%));
+
+  --palette-orange-0: color-mod(var(--palette-orange) tint(60%));
+  --palette-orange-1: color-mod(var(--palette-orange) tint(50%));
+  --palette-orange-2: color-mod(var(--palette-orange) tint(40%));
+  --palette-orange-3: color-mod(var(--palette-orange) tint(30%));
+  --palette-orange-4: color-mod(var(--palette-orange) tint(20%));
+  --palette-orange-5: color-mod(var(--palette-orange) tint(10%));
+  --palette-orange-6: var(--palette-orange);
+  --palette-orange-7: color-mod(var(--palette-orange) shade(10%));
+  --palette-orange-8: color-mod(var(--palette-orange) shade(20%));
+  --palette-orange-9: color-mod(var(--palette-orange) shade(30%));
+
+  --palette-violet-0: color-mod(var(--palette-violet) tint(60%));
+  --palette-violet-1: color-mod(var(--palette-violet) tint(50%));
+  --palette-violet-2: color-mod(var(--palette-violet) tint(40%));
+  --palette-violet-3: color-mod(var(--palette-violet) tint(30%));
+  --palette-violet-4: color-mod(var(--palette-violet) tint(20%));
+  --palette-violet-5: color-mod(var(--palette-violet) tint(10%));
+  --palette-violet-6: var(--palette-violet);
+  --palette-violet-7: color-mod(var(--palette-violet) shade(10%));
+  --palette-violet-8: color-mod(var(--palette-violet) shade(20%));
+  --palette-violet-9: color-mod(var(--palette-violet) shade(30%));
+
+  --palette-pink-0: color-mod(var(--palette-pink) tint(60%));
+  --palette-pink-1: color-mod(var(--palette-pink) tint(50%));
+  --palette-pink-2: color-mod(var(--palette-pink) tint(40%));
+  --palette-pink-3: color-mod(var(--palette-pink) tint(30%));
+  --palette-pink-4: color-mod(var(--palette-pink) tint(20%));
+  --palette-pink-5: color-mod(var(--palette-pink) tint(10%));
+  --palette-pink-6: var(--palette-pink);
+  --palette-pink-7: color-mod(var(--palette-pink) shade(10%));
+  --palette-pink-8: color-mod(var(--palette-pink) shade(20%));
+  --palette-pink-9: color-mod(var(--palette-pink) shade(30%));
+
+  --palette-blue-gray-0: color-mod(var(--palette-blue-gray) tint(60%));
+  --palette-blue-gray-1: color-mod(var(--palette-blue-gray) tint(50%));
+  --palette-blue-gray-2: color-mod(var(--palette-blue-gray) tint(40%));
+  --palette-blue-gray-3: color-mod(var(--palette-blue-gray) tint(30%));
+  --palette-blue-gray-4: color-mod(var(--palette-blue-gray) tint(20%));
+  --palette-blue-gray-5: color-mod(var(--palette-blue-gray) tint(10%));
+  --palette-blue-gray-6: var(--palette-blue-gray);
+  --palette-blue-gray-7: color-mod(var(--palette-blue-gray) shade(10%));
+  --palette-blue-gray-8: color-mod(var(--palette-blue-gray) shade(20%));
+  --palette-blue-gray-9: color-mod(var(--palette-blue-gray) shade(30%));
+
+  --palette-indigo-0: color-mod(var(--palette-indigo) tint(60%));
+  --palette-indigo-1: color-mod(var(--palette-indigo) tint(50%));
+  --palette-indigo-2: color-mod(var(--palette-indigo) tint(40%));
+  --palette-indigo-3: color-mod(var(--palette-indigo) tint(30%));
+  --palette-indigo-4: color-mod(var(--palette-indigo) tint(20%));
+  --palette-indigo-5: color-mod(var(--palette-indigo) tint(10%));
+  --palette-indigo-6: var(--palette-indigo);
+  --palette-indigo-7: color-mod(var(--palette-indigo) shade(10%));
+  --palette-indigo-8: color-mod(var(--palette-indigo) shade(20%));
+  --palette-indigo-9: color-mod(var(--palette-indigo) shade(30%));
+
+  --spacing-none: 0;
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-s: 0.75rem;
+  --spacing-m: 1rem;
+  --spacing-l: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+
+  --border-radius-none: 0;
+  --border-radius-xxs: 2px;
+  --border-radius-xs: 4px;
+  --border-radius-s: 6px;
+  --border-radius-m: 8px;
+  --border-radius-l: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-xxl: 24px;
+
+  --font-size-xxs: 0.5rem;
+  --font-size-xs: 0.65rem;
+  --font-size-s: 0.875rem;
+  --font-size-m: 1rem;
+  --font-size-l: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+}

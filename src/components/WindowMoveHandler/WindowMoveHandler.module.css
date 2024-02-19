@@ -1,0 +1,8 @@
+.window-drag-region {
+  @util size(100vw, 48px);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}

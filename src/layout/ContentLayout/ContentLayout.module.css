@@ -1,0 +1,31 @@
+@import "@/mixins.css";
+
+.content-layout {
+  @util size(100%, 100%);
+  @include flex(column, flex-start, stretch);
+  z-index: 100;
+  .title {
+    @util size(100%, 32px);
+    @util padding(var(--spacing-xs) var(--spacing-s));
+    @include flex(row, flex-start, center, --spacing-xs);
+    @util border-bottom-radius(0px);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--palette-gray-3);
+    @include dark-mode {
+      border-bottom-color: var(--palette-gray-9);
+    }
+    .title-content {
+      flex-grow: 1;
+      font-size: var(--font-size-s);
+    }
+    .close-button {
+      z-index: 500;
+    }
+  }
+  .content {
+    @util size(100%);
+    flex: 1;
+    overflow: hidden;
+  }
+}

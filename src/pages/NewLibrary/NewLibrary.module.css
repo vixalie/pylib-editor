@@ -1,0 +1,16 @@
+@import "@/mixins.css";
+
+.container {
+  @util padding(var(--spacing-l) var(--spacing-m));
+  @include flex(column, flex-start, stretch, --spacing-m);
+  & .form-line {
+    @include flex(row, flex-start, center, --spacing-s);
+    & .input,
+    & .textarea {
+      flex: 1;
+    }
+    & > .spacer {
+      max-width: 10em;
+    }
+  }
+}

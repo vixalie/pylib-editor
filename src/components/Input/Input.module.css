@@ -1,0 +1,161 @@
+@import "@/mixins.css";
+
+.input-container {
+  @include flex(row, flex-start, center);
+  border-radius: var(--border-radius-xs);
+  @each $color in (primary, secondary, danger, warn, success, info) {
+    &.color-#{$color} {
+      &.variant-fill {
+        background-color: var(--color-#{$color});
+        & > input,
+        & > div[contenteditable] {
+          color: var(--color-#{$color}-input-fg);
+        }
+        & .value-control-button {
+          color: var(--color-#{$color}-input-fg);
+        }
+        &:has(input:focus:not([readonly])),
+        &:has(div[contenteditable]:focus:not([readonly])) {
+          outline: 1px solid var(--color-#{$color}-focus);
+        }
+      }
+      &.variant-outline {
+        border: 1px solid var(--color-#{$color});
+        & > input,
+        & > div[contenteditable] {
+          color: var(--color-#{$color}-input-fg);
+        }
+        & .value-control-button {
+          color: var(--color-#{$color});
+          &:hover {
+            color: var(--color-#{$color}-hover);
+          }
+          &:active {
+            color: var(--color-#{$color}-active);
+          }
+        }
+        &:has(input:focus:not([readonly])),
+        &:has(div[contenteditable]:focus:not([readonly])) {
+          outline: 1px solid var(--color-#{$color}-focus);
+        }
+      }
+      &.variant-underline {
+        border-radius: 0;
+        border-bottom: 1px solid var(--color-#{$color});
+        background-color: var(--color-input-underlined-bg);
+        & > input,
+        & > div[contenteditable] {
+          color: var(--color-#{$color}-input-fg);
+        }
+        & .value-control-button {
+          color: var(--color-#{$color});
+          &:hover {
+            color: var(--color-#{$color}-hover);
+          }
+          &:active {
+            color: var(--color-#{$color}-active);
+          }
+        }
+        &:has(input:focus:not([readonly])),
+        &:has(div[contenteditable]:focus:not([readonly])) {
+          border-bottom: 1px solid var(--color-#{$color}-focus);
+        }
+      }
+      &.variant-transparent {
+        & > input,
+        & > div[contenteditable] {
+          color: var(--color-#{$color});
+        }
+
+        & .value-control-button {
+          color: var(--color-#{$color});
+          &:hover {
+            color: var(--color-#{$color}-hover);
+          }
+          &:active {
+            color: var(--color-#{$color}-active);
+          }
+        }
+        background-color: transparent;
+      }
+    }
+  }
+  .left-section-container {
+    border: none;
+  }
+  .input,
+  div[contenteditable] {
+    @util padding(var(--spacing-xs) var(--spacing-xs));
+    border: none;
+    background-color: transparent;
+    font-size: var(--font-size-m);
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  div[contenteditable] {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    min-height: var(--font-size-m);
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+    cursor: text;
+    user-select: text;
+    pointer-events: auto;
+  }
+  .right-section-container {
+    border: none;
+  }
+}
+
+.label {
+  @include flex(row, flex-end, center, --spacing-xs);
+  min-width: 10em;
+  &.required {
+    &::before {
+      content: "*";
+      color: var(--color-danger);
+    }
+  }
+}
+
+.inline-edit {
+  @include flex(row, flex-start, center, --spacing-xs);
+  font-size: var(--font-size-m);
+  & [contenteditable] {
+    @util padding(var(--spacing-xs) var(--spacing-xs));
+    display: inline-block;
+    flex-grow: 1;
+    border: none;
+    min-height: var(--font-size-m);
+    height: auto;
+    cursor: text;
+    pointer-events: auto;
+    overflow: hidden;
+    background-color: transparent;
+    font-size: var(--font-size-m);
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  .action {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    & .check {
+      color: var(--color-success);
+      &:hover {
+        color: var(--color-success-hover);
+      }
+    }
+    & .cancel {
+      color: var(--color-danger);
+      &:hover {
+        color: var(--color-danger-hover);
+      }
+    }
+  }
+}

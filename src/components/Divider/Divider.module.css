@@ -1,0 +1,17 @@
+@import "@/mixins.css";
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top-style: solid;
+  border-top-color: var(--color-border);
+  border-top-width: 0;
+}
+
+.divider-vertical {
+  height: 100%;
+  border: none;
+  border-left-style: solid;
+  border-left-color: var(--color-border);
+  border-left-width: 0;
+}

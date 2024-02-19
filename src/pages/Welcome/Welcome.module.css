@@ -1,0 +1,19 @@
+@import "@/mixins.css";
+
+.position-container {
+  @util size(100%, 100%);
+  @include flex(row, center, stretch);
+  & .welcome-content {
+    @include flex(column, center, center, --spacing-xs);
+    & > h1 {
+      @util margin(0);
+      font-size: var(--font-size-xl);
+      linge-height: var(--font-size-xl);
+    }
+    & > .version {
+      @util margin(0);
+      font-size: var(--font-size-xs);
+      linge-height: var(--font-size-xs);
+    }
+  }
+}
